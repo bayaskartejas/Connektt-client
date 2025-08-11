@@ -94,7 +94,7 @@ function InfluencersContent() {
               <select
                 value={selectedCategory}
                 onChange={(e) => {
-                  const params = new URLSearchParams(searchParams);
+                  const params = new URLSearchParams(searchParams.toString());
                   if (e.target.value) {
                     params.set('category', e.target.value);
                   } else {
@@ -115,7 +115,7 @@ function InfluencersContent() {
               <select
                 value={selectedLocation}
                 onChange={(e) => {
-                  const params = new URLSearchParams(searchParams);
+                  const params = new URLSearchParams(searchParams.toString());
                   if (e.target.value) {
                     params.set('location', e.target.value);
                   } else {
@@ -137,7 +137,7 @@ function InfluencersContent() {
                 type="date"
                 value={selectedDate}
                 onChange={(e) => {
-                  const params = new URLSearchParams(searchParams);
+                  const params = new URLSearchParams(searchParams.toString());
                   if (e.target.value) {
                     params.set('date', e.target.value);
                   } else {
