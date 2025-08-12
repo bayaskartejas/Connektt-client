@@ -14,7 +14,7 @@ interface CategoryCardProps {
 
 export default function CategoryCard({ category, index }: CategoryCardProps) {
   return (
-    <Link href={`/influencers?category=${category.id}`}>
+    <Link href={`/influencers?category=${category.name}`}>
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}

@@ -190,7 +190,7 @@ export default function Home() {
 
           <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
             {categories.slice(0, 10).map((category, index) => (
-              <CategoryCard key={category.id} category={category} index={index} />
+              <CategoryCard key={category.name} category={category} index={index} />
             ))}
           </div>
         </div>
