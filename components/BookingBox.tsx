@@ -68,7 +68,7 @@ export default function BookingBox() {
             >
               <option value="">Select Category</option>
               {categories.map((cat) => (
-                <option key={cat.id} value={cat.id} className="text-black">
+                <option key={cat.id} value={cat.name} className="text-black">
                   {cat.name}
                 </option>
               ))}

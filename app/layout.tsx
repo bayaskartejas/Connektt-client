@@ -1,6 +1,7 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
+import { ProfessionalsProvider } from './context/ProfessionalsContext';
 
 const poppins = Poppins({ 
   subsets: ['latin'],
@@ -21,7 +22,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${poppins.variable} font-sans antialiased`}>{children}</body>
+      <body className={`${poppins.variable} font-sans antialiased`}>
+        <ProfessionalsProvider >
+          {children}
+        </ProfessionalsProvider>
+      </body>
     </html>
   );
 }

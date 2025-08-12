@@ -21,16 +21,16 @@ export default function InfluencerCard({ influencer, index }: InfluencerCardProp
     >
       <div className="flex items-start space-x-4 mb-4">
         <div className="w-16 h-16 rounded-full bg-gradient-to-br from-white/20 to-white/10 flex items-center justify-center text-2xl">
-          {influencer.profession.includes('Choreographer') && '💃'}
-          {influencer.profession.includes('Makeup') && '💄'}
-          {influencer.profession.includes('Photographer') && '📸'}
-          {influencer.profession.includes('Hair') && '✂️'}
-          {influencer.profession.includes('Content') && '🎬'}
-          {influencer.profession.includes('Fashion') && '👗'}
+          {influencer.business.includes('Choreographer') && '💃'}
+          {influencer.business.includes('Makeup') && '💄'}
+          {influencer.business.includes('Photographer') && '📸'}
+          {influencer.business.includes('Hair') && '✂️'}
+          {influencer.business.includes('Content') && '🎬'}
+          {influencer.business.includes('Fashion') && '👗'}
         </div>
         <div className="flex-1">
           <h3 className="text-xl font-bold text-white mb-1">
-            {influencer.name} – {influencer.profession}
+            {influencer.name} – {influencer.business}
           </h3>
           <div className="flex items-center space-x-4 text-gray-300 text-sm">
             <div className="flex items-center">
@@ -48,7 +48,7 @@ export default function InfluencerCard({ influencer, index }: InfluencerCardProp
       <div className="space-y-4">
         <div className="flex items-center text-gray-300 text-sm">
           <Clock className="w-4 h-4 mr-2" />
-          <span>Experience: {influencer.experience}</span>
+          <span>Experience: {influencer.experience} years</span>
         </div>
 
         <div>
@@ -83,7 +83,7 @@ export default function InfluencerCard({ influencer, index }: InfluencerCardProp
         <div>
           <h4 className="text-white font-medium mb-3">💼 Service Packages:</h4>
           <div className="space-y-2">
-            {influencer.packages.map((pkg, idx) => (
+            {influencer.packages && influencer.packages.map((pkg, idx) => (
               <div key={idx} className="flex justify-between items-center text-sm">
                 <span className="text-gray-300">{idx + 1}. {pkg.name}</span>
                 <span className="text-white font-semibold">₹{pkg.price.toLocaleString()}</span>
