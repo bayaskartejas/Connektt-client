@@ -7,40 +7,65 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import CategoryCard from '@/components/CategoryCard';
 import InfluencerCard from '@/components/InfluencerCard';
-import { categories, mockInfluencers, locations, Influencer } from '@/lib/mock-data';
+import { categories, locations, Influencer } from '@/lib/mock-data';
 import { Filter, Search } from 'lucide-react';
+import { useProfessionals } from '../context/ProfessionalsContext';
 
 function InfluencersContent() {
+  const apiURL  = process.env.NEXT_PUBLIC_API_URL
   const searchParams = useSearchParams();
   const [filteredInfluencers, setFilteredInfluencers] = useState<Influencer[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>('');
   const [selectedLocation, setSelectedLocation] = useState<string>('');
   const [selectedDate, setSelectedDate] = useState<string>('');
   const [showFilters, setShowFilters] = useState(false);
+  const { setProfessionals } = useProfessionals()
 
   useEffect(() => {
-    // Get URL parameters
-    const categoryParam = searchParams.get('category') || '';
-    const locationParam = searchParams.get('location') || '';
-    const dateParam = searchParams.get('date') || '';
+    setSelectedCategory(searchParams.get('category') || '');
+    setSelectedLocation(searchParams.get('location') || '');
+    setSelectedDate(searchParams.get('date') || '');
+  }, []);
 
-    setSelectedCategory(categoryParam);
-    setSelectedLocation(locationParam);
-    setSelectedDate(dateParam);
-
-    // Filter influencers based on parameters
-    let filtered = mockInfluencers;
-
-    if (categoryParam) {
-      filtered = filtered.filter(influencer => influencer.category === categoryParam);
+useEffect(() => {
+  if (!selectedLocation) {
+    setFilteredInfluencers([]);
+    if (selectedCategory || selectedDate) {
+      alert('Please select a location to search.');
     }
+    return;
+  }
 
-    if (locationParam) {
-      filtered = filtered.filter(influencer => influencer.location === locationParam);
+  const fetchData = async () => {
+    try {
+      let endpoint = '';
+
+      if (selectedLocation && !selectedCategory && !selectedDate) {
+        endpoint = `${apiURL}/api/pro/${selectedLocation}/all`;
+      } else if (selectedLocation && selectedCategory && !selectedDate) {
+        endpoint = `${apiURL}/api/pro/${selectedLocation}/${selectedCategory}`;
+      } else if (selectedLocation && !selectedCategory && selectedDate) {
+        endpoint = `${apiURL}/api/pro/${selectedLocation}/${selectedDate}/all`;
+      } else if (selectedLocation && selectedCategory && selectedDate) {
+        endpoint = `${apiURL}/api/pro/${selectedLocation}/${selectedDate}/${selectedCategory}`;
+      }
+
+      if (!endpoint) return;
+
+      const res = await fetch(endpoint);
+      if (!res.ok) throw new Error('Failed to fetch professionals');
+      const data: Influencer[] = await res.json();
+
+      setFilteredInfluencers(data);
+      setProfessionals(data)
+    } catch (err) {
+      console.error(err);
+      alert('Failed to load professionals. Please try again.');
     }
+  };
 
-    setFilteredInfluencers(filtered);
-  }, [searchParams]);
+  fetchData();
+}, [selectedLocation, selectedCategory, selectedDate]); 
 
   const fadeInUpVariants = {
     hidden: { opacity: 0, y: 60 },
@@ -50,6 +75,21 @@ function InfluencersContent() {
       transition: { duration: 0.6 }
     }
   };
+
+const handleFilterChange = (key: 'category' | 'location' | 'date', value: string) => {
+  if (key === 'category') setSelectedCategory(value);
+  if (key === 'location') setSelectedLocation(value);
+  if (key === 'date') setSelectedDate(value);
+
+  const params = new URLSearchParams(window.location.search);
+  if (value) {
+    params.set(key, value);
+  } else {
+    params.delete(key);
+  }
+  window.history.pushState({}, '', `?${params.toString()}`);
+};
+
 
   const hasActiveFilters = selectedCategory || selectedLocation || selectedDate;
 
@@ -93,20 +133,12 @@ function InfluencersContent() {
             <div className={`grid grid-cols-1 md:grid-cols-3 gap-4 ${showFilters ? 'block' : 'hidden md:grid'}`}>
               <select
                 value={selectedCategory}
-                onChange={(e) => {
-                  const params = new URLSearchParams(searchParams.toString());
-                  if (e.target.value) {
-                    params.set('category', e.target.value);
-                  } else {
-                    params.delete('category');
-                  }
-                  window.history.pushState({}, '', `?${params.toString()}`);
-                }}
+                onChange={(e) => handleFilterChange('category', e.target.value)}
                 className="px-4 py-3 bg-white/10 border border-white/30 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-white/50"
               >
                 <option value="">All Categories</option>
                 {categories.map((cat) => (
-                  <option key={cat.id} value={cat.id} className="text-black">
+                  <option key={cat.id} value={cat.name} className="text-black">
                     {cat.name}
                   </option>
                 ))}
@@ -114,15 +146,7 @@ function InfluencersContent() {
 
               <select
                 value={selectedLocation}
-                onChange={(e) => {
-                  const params = new URLSearchParams(searchParams.toString());
-                  if (e.target.value) {
-                    params.set('location', e.target.value);
-                  } else {
-                    params.delete('location');
-                  }
-                  window.history.pushState({}, '', `?${params.toString()}`);
-                }}
+                onChange={(e) => handleFilterChange('location', e.target.value)}
                 className="px-4 py-3 bg-white/10 border border-white/30 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-white/50"
               >
                 <option value="">All Locations</option>
@@ -132,19 +156,10 @@ function InfluencersContent() {
                   </option>
                 ))}
               </select>
-
               <input
                 type="date"
                 value={selectedDate}
-                onChange={(e) => {
-                  const params = new URLSearchParams(searchParams.toString());
-                  if (e.target.value) {
-                    params.set('date', e.target.value);
-                  } else {
-                    params.delete('date');
-                  }
-                  window.history.pushState({}, '', `?${params.toString()}`);
-                }}
+                onChange={(e) => handleFilterChange('date', e.target.value)}
                 className="px-4 py-3 bg-white/10 border border-white/30 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-white/50"
               />
             </div>
@@ -226,7 +241,7 @@ function InfluencersContent() {
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {mockInfluencers.slice(0, 6).map((influencer, index) => (
+              {filteredInfluencers.slice(0, 6).map((influencer, index) => (
                 <InfluencerCard key={influencer.id} influencer={influencer} index={index} />
               ))}
             </div>
