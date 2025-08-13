@@ -196,7 +196,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Why Connekkt Section */}
+      {/* Why Connektt Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <motion.div
@@ -206,7 +206,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Why Connekkt?</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">Why Connektt?</h2>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto">
               The trusted platform for booking verified professionals
             </p>

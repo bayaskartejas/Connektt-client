@@ -86,13 +86,13 @@ function BookingContent() {
         <Navbar />
         <div className="flex items-center justify-center min-h-screen">
           <div className="text-center">
-            <h1 className="text-4xl font-bold mb-4">Influencer Not Found</h1>
-            <p className="text-gray-300 mb-8">The influencer you're looking for doesn't exist.</p>
+            <h1 className="text-4xl font-bold mb-4">Professional Not Found</h1>
+            <p className="text-gray-300 mb-8">The professional you're looking for doesn't exist.</p>
             <a
               href="/influencers"
               className="bg-white text-black font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition-all duration-300"
             >
-              Browse Influencers
+              Browse Professionals
             </a>
           </div>
         </div>

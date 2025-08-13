@@ -82,7 +82,7 @@ export default function About() {
             transition={{ duration: 0.8 }}
             className="text-4xl md:text-6xl font-bold mb-6"
           >
-            About Connekkt
+            About Connektt
           </motion.h1>
           
           <motion.p
@@ -160,13 +160,13 @@ export default function About() {
               <h2 className="text-4xl md:text-5xl font-bold mb-8">Our Story</h2>
               <div className="space-y-6 text-gray-300 text-lg leading-relaxed">
                 <p>
-                  Connekkt was born from a simple yet powerful idea: making it easier for people to find and book talented professionals for their special moments. Whether it's a wedding, corporate event, or personal milestone, everyone deserves access to exceptional creative talent.
+                  Connektt was born from a simple yet powerful idea: making it easier for people to find and book talented professionals for their special moments. Whether it's a wedding, corporate event, or personal milestone, everyone deserves access to exceptional creative talent.
                 </p>
                 <p>
                   Founded in 2023, we started with a mission to bridge the gap between talented influencers and people who need their services. We noticed that finding reliable, professional, and affordable talent was often a challenge, especially for important life events.
                 </p>
                 <p>
-                  Today, Connekkt has grown into a thriving platform that connects thousands of clients with verified professionals across multiple categories. We're proud to be the trusted choice for people looking to make their events memorable and special.
+                  Today, Connektt has grown into a thriving platform that connects thousands of clients with verified professionals across multiple categories. We're proud to be the trusted choice for people looking to make their events memorable and special.
                 </p>
               </div>
             </motion.div>

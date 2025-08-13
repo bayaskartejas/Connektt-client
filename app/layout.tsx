@@ -10,7 +10,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: 'Connekkt - Find & Book Your Perfect Influencer',
+  title: 'Connektt - Find & Book Your Perfect Influencer',
   description: 'Connect with verified influencers and creative professionals. From hair stylists to choreographers, book your perfect match for any occasion.',
   keywords: 'influencers, booking, hair stylist, makeup artist, photographer, choreographer, fashion designer, content creator',
 };
