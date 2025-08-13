@@ -20,6 +20,8 @@ function InfluencersContent() {
   const [selectedDate, setSelectedDate] = useState<string>('');
   const [showFilters, setShowFilters] = useState(false);
   const { setProfessionals } = useProfessionals()
+  const [isLoading, setIsLoading] = useState(false);
+
 
   useEffect(() => {
     setSelectedCategory(searchParams.get('category') || '');
@@ -38,6 +40,7 @@ useEffect(() => {
 
   const fetchData = async () => {
     try {
+      setIsLoading(true); // start loading
       let endpoint = '';
 
       if (selectedLocation && !selectedCategory && !selectedDate) {
@@ -57,15 +60,18 @@ useEffect(() => {
       const data: Influencer[] = await res.json();
 
       setFilteredInfluencers(data);
-      setProfessionals(data)
+      setProfessionals(data);
     } catch (err) {
       console.error(err);
       alert('Failed to load professionals. Please try again.');
+    } finally {
+      setIsLoading(false); // stop loading
     }
   };
 
   fetchData();
-}, [selectedLocation, selectedCategory, selectedDate]); 
+}, [selectedLocation, selectedCategory, selectedDate]);
+
 
   const fadeInUpVariants = {
     hidden: { opacity: 0, y: 60 },
@@ -191,39 +197,44 @@ const handleFilterChange = (key: 'category' | 'location' | 'date', value: string
         </section>
       )}
 
-      {/* Influencer Results */}
-      {hasActiveFilters && (
-        <section className="py-12 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            {filteredInfluencers.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {filteredInfluencers.map((influencer, index) => (
-                  <InfluencerCard key={influencer.id} influencer={influencer} index={index} />
-                ))}
-              </div>
-            ) : (
-              <div className="text-center py-20">
-                <Search className="w-16 h-16 text-gray-400 mx-auto mb-6" />
-                <h3 className="text-2xl font-bold mb-4">No Results Found</h3>
-                <p className="text-gray-300 mb-8">
-                  Try adjusting your filters or browse all categories above
-                </p>
-                <button
-                  onClick={() => {
-                    window.history.pushState({}, '', '/influencers');
-                    setSelectedCategory('');
-                    setSelectedLocation('');
-                    setSelectedDate('');
-                  }}
-                  className="bg-white text-black font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition-all duration-300"
-                >
-                  Clear Filters
-                </button>
-              </div>
-            )}
-          </div>
-        </section>
-      )}
+    {/* Influencer Results */}
+    {hasActiveFilters && (
+      <section className="py-12 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          {isLoading ? (
+            <div className="flex justify-center items-center py-20">
+              <div className="w-12 h-12 border-4 border-white border-t-transparent rounded-full animate-spin"></div>
+            </div>
+          ) : filteredInfluencers.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredInfluencers.map((influencer, index) => (
+                <InfluencerCard key={influencer.id} influencer={influencer} index={index} />
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-20">
+              <Search className="w-16 h-16 text-gray-400 mx-auto mb-6" />
+              <h3 className="text-2xl font-bold mb-4">No Results Found</h3>
+              <p className="text-gray-300 mb-8">
+                Try adjusting your filters or browse all categories above
+              </p>
+              <button
+                onClick={() => {
+                  window.history.pushState({}, '', '/influencers');
+                  setSelectedCategory('');
+                  setSelectedLocation('');
+                  setSelectedDate('');
+                }}
+                className="bg-white text-black font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition-all duration-300"
+              >
+                Clear Filters
+              </button>
+            </div>
+          )}
+        </div>
+      </section>
+    )}
+
 
       {/* Featured Influencers (show when no filters) */}
       {!hasActiveFilters && (
