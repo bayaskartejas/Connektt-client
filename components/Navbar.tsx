@@ -38,7 +38,7 @@ const Navbar = () => {
           <div className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo */}
             <Link href="/" className="text-2xl lg:text-3xl font-bold text-white">
-              CONNEKKT
+              CONNEKTT
             </Link>
 
             {/* Desktop Menu */}
@@ -62,7 +62,7 @@ const Navbar = () => {
                 className="w-full flex justify-between items-center border-2 border-white rounded-full pr-4 pl-4 py-2 text-white hover:bg-white hover:text-black hover:font-semibold
                 transition-all duration-300"
               >
-                Book Professionals
+                Book Now
               </Link>
 
 
@@ -100,7 +100,7 @@ const Navbar = () => {
             >
               <div className="p-6">
                 <div className="flex justify-between items-center mb-8">
-                  <span className="text-xl font-bold text-white">CONNEKKT</span>
+                  <span className="text-xl font-bold text-white">CONNEKTT</span>
                   <button
                     onClick={() => setIsOpen(false)}
                     className="text-white p-2"
@@ -138,7 +138,7 @@ const Navbar = () => {
                       onClick={() => setIsOpen(false)}
                       className="w-full flex justify-center items-center border-2 border-white rounded-full pr-4 pl-4 py-2 text-white hover:bg-white hover:text-black hover:font-bold transition-all duration-300"
                     >
-                      Book an Influencer
+                      Book a Professional
                     </Link>
 
                   </motion.div>

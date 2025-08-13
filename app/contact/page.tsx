@@ -47,7 +47,7 @@ export default function Contact() {
     {
       icon: Mail,
       title: 'Email Us',
-      content: 'hello@connekkt.com',
+      content: 'hello@connektt.com',
       description: 'Send us an email anytime'
     },
     {
@@ -284,7 +284,7 @@ export default function Contact() {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <a
-                    href="mailto:hello@connekkt.com"
+                    href="mailto:hello@connektt.com"
                     className="flex items-center justify-center space-x-2 bg-white text-black font-semibold py-3 px-6 rounded-lg hover:bg-gray-100 transition-all duration-300"
                   >
                     <Mail className="w-5 h-5" />
