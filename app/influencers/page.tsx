@@ -44,13 +44,13 @@ useEffect(() => {
       let endpoint = '';
 
       if (selectedLocation && !selectedCategory && !selectedDate) {
-        endpoint = `${apiURL}/api/pro/${selectedLocation}/all`;
+        endpoint = `${apiURL}/api/pro/${encodeURIComponent(selectedLocation)}/all`;
       } else if (selectedLocation && selectedCategory && !selectedDate) {
-        endpoint = `${apiURL}/api/pro/${selectedLocation}/${selectedCategory}`;
+        endpoint = `${apiURL}/api/pro/${encodeURIComponent(selectedLocation)}/${encodeURIComponent(selectedCategory)}`;
       } else if (selectedLocation && !selectedCategory && selectedDate) {
-        endpoint = `${apiURL}/api/pro/${selectedLocation}/${selectedDate}/all`;
+        endpoint = `${apiURL}/api/pro/${encodeURIComponent(selectedLocation)}/${selectedDate}/all`;
       } else if (selectedLocation && selectedCategory && selectedDate) {
-        endpoint = `${apiURL}/api/pro/${selectedLocation}/${selectedDate}/${selectedCategory}`;
+        endpoint = `${apiURL}/api/pro/${encodeURIComponent(selectedLocation)}/${selectedDate}/${encodeURIComponent(selectedCategory)}`;
       }
 
       if (!endpoint) return;
