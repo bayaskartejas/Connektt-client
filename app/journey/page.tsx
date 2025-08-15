@@ -97,7 +97,7 @@ export default function OurJourney() {
                 icon: <Users className="w-6 h-6" />
               },
               {
-                name: "Mandar Pandey",
+                name: "Tejas Bayaskar",
                 role: "Tech Head & Developer",
                 description: "Oversees platform architecture, development, and continuous innovation",
                 icon: <Code className="w-6 h-6" />
@@ -194,7 +194,7 @@ export default function OurJourney() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white/5">
+      {/* <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white/5">
         <div className="max-w-7xl mx-auto">
           <motion.div
             variants={staggerContainer}
@@ -222,7 +222,7 @@ export default function OurJourney() {
             ))}
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       {/* Call to Action */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">

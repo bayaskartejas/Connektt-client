@@ -52,6 +52,7 @@ export default function Footer() {
             <Link href="/" className="inline-block mb-4">
               <span className="text-3xl font-bold tracking-wider">CONNEKTT</span>
             </Link>
+            <div className='my-2'>Built for collaboration,Designed for creators, Anytime Anywhere</div>
             <p className="text-gray-400 mb-6 max-w-md">
               Your premier platform to discover and book talented influencers for any occasion. 
               From hair stylists to choreographers, we connect you with verified professionals.
@@ -100,7 +101,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-gray-400" />
-                <span className="text-gray-400">+91 98765 43210</span>
+                <span className="text-gray-400">+91 88305 82824</span>
               </div>
             </div>
           </motion.div>

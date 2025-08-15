@@ -97,7 +97,7 @@ export default function About() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white/5">
+      {/* <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white/5">
         <div className="max-w-7xl mx-auto">
           <motion.div
             variants={staggerContainer}
@@ -118,7 +118,7 @@ export default function About() {
             ))}
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       {/* Mission, Values, Promise */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
@@ -160,13 +160,20 @@ export default function About() {
               <h2 className="text-4xl md:text-5xl font-bold mb-8">Our Story</h2>
               <div className="space-y-6 text-gray-300 text-lg leading-relaxed">
                 <p>
-                  Connektt was born from a simple yet powerful idea: making it easier for people to find and book talented professionals for their special moments. Whether it's a wedding, corporate event, or personal milestone, everyone deserves access to exceptional creative talent.
+                  Connektt is a smart booking platform that connects
+                  creators with verified service professionals—like
+                  photographers, editors, stylists, and studios—based on
+                  location, domain, and urgency. 
                 </p>
                 <p>
-                  Founded in 2023, we started with a mission to bridge the gap between talented influencers and people who need their services. We noticed that finding reliable, professional, and affordable talent was often a challenge, especially for important life events.
+                  Whether you're shooting a reel tomorrow or planning a
+                  full-scale campaign, Connektt helps you discover,
+                  compare, and book the right talent—faster and smarter.
                 </p>
                 <p>
-                  Today, Connektt has grown into a thriving platform that connects thousands of clients with verified professionals across multiple categories. We're proud to be the trusted choice for people looking to make their events memorable and special.
+                  Built for the creator economy, powered by trust, and
+                  inspired by the universe, Connektt is where every
+                  project finds its perfect orbit.
                 </p>
               </div>
             </motion.div>
