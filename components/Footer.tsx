@@ -8,7 +8,7 @@ export default function Footer() {
   const quickLinks = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
-    { name: 'Influencers', href: '/influencers' },
+    { name: 'Professionals', href: '/influencers' },
     { name: 'Book Now', href: '/book' },
     { name: 'Contact', href: '/contact' },
   ];
@@ -50,7 +50,7 @@ export default function Footer() {
           {/* Logo and Description */}
           <motion.div variants={itemVariants} className="col-span-1 md:col-span-2">
             <Link href="/" className="inline-block mb-4">
-              <span className="text-3xl font-bold tracking-wider">CONNEKKT</span>
+              <span className="text-3xl font-bold tracking-wider">CONNEKTT</span>
             </Link>
             <p className="text-gray-400 mb-6 max-w-md">
               Your premier platform to discover and book talented influencers for any occasion. 
@@ -96,7 +96,7 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-gray-400" />
-                <span className="text-gray-400">hello@connektt.com</span>
+                <span className="text-gray-400">connekttofficial@gmail.com</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-gray-400" />

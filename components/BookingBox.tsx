@@ -41,18 +41,24 @@ export default function BookingBox() {
       
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {/* Date Field */}
+          {/* Location Field */}
           <div className="relative">
             <label className="block text-white text-sm font-medium mb-2">
-              <Calendar className="inline w-4 h-4 mr-2" />
-              Date
+              <MapPin className="inline w-4 h-4 mr-2" />
+              Location
             </label>
-            <input
-              type="date"
-              value={formData.date}
-              onChange={(e) => handleInputChange('date', e.target.value)}
-              className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
-            />
+            <select
+              value={formData.location}
+              onChange={(e) => handleInputChange('location', e.target.value)}
+              className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
+            >
+              <option value="">Select Location</option>
+              {locations.map((location) => (
+                <option key={location} value={location} className="text-black">
+                  {location}
+                </option>
+              ))}
+            </select>
           </div>
 
           {/* Category Field */}
@@ -75,24 +81,18 @@ export default function BookingBox() {
             </select>
           </div>
 
-          {/* Location Field */}
+          {/* Date Field */}
           <div className="relative">
             <label className="block text-white text-sm font-medium mb-2">
-              <MapPin className="inline w-4 h-4 mr-2" />
-              Location
+              <Calendar className="inline w-4 h-4 mr-2" />
+              Date
             </label>
-            <select
-              value={formData.location}
-              onChange={(e) => handleInputChange('location', e.target.value)}
-              className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
-            >
-              <option value="">Select Location</option>
-              {locations.map((location) => (
-                <option key={location} value={location} className="text-black">
-                  {location}
-                </option>
-              ))}
-            </select>
+            <input
+              type="date"
+              value={formData.date}
+              onChange={(e) => handleInputChange('date', e.target.value)}
+              className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
+            />
           </div>
         </div>
 

@@ -40,6 +40,8 @@ const Navbar = () => {
             <Link href="/" className="text-2xl lg:text-3xl font-bold text-white">
               CONNEKTT
             </Link>
+            
+            
 
             {/* Desktop Menu */}
             <div className="hidden lg:flex items-center space-x-8">
