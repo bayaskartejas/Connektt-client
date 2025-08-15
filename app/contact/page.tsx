@@ -47,13 +47,13 @@ export default function Contact() {
     {
       icon: Mail,
       title: 'Email Us',
-      content: 'hello@connektt.com',
+      content: 'connekttofficial@gmail.com',
       description: 'Send us an email anytime'
     },
     {
       icon: Phone,
       title: 'Call Us',
-      content: '+91 98765 43210',
+      content: '+91 88305 82824',
       description: 'Mon-Fri from 9am to 6pm'
     },
     {
@@ -284,14 +284,14 @@ export default function Contact() {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <a
-                    href="mailto:hello@connektt.com"
+                    href="mailto:connekttofficial@gmail.com"
                     className="flex items-center justify-center space-x-2 bg-white text-black font-semibold py-3 px-6 rounded-lg hover:bg-gray-100 transition-all duration-300"
                   >
                     <Mail className="w-5 h-5" />
                     <span>Email Support</span>
                   </a>
                   <a
-                    href="tel:+919876543210"
+                    href="tel:+918830582824"
                     className="flex items-center justify-center space-x-2 border-2 border-white text-white font-semibold py-3 px-6 rounded-lg hover:bg-white hover:text-black transition-all duration-300"
                   >
                     <Phone className="w-5 h-5" />
