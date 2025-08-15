@@ -68,7 +68,7 @@ function BookingContent() {
 
   const getSelectedPackage = () => {
     if (!influencer || !formData.selectedPackage) return null;
-    return influencer.packages.find(pkg => pkg.name === formData.selectedPackage);
+    return influencer.services.find(pkg => pkg.title === formData.selectedPackage);
   };
 
   const fadeInUpVariants = {
@@ -306,23 +306,23 @@ function BookingContent() {
                       <h2 className="text-2xl font-bold mb-6">Select Package</h2>
                       
                       <div className="space-y-4">
-                        {influencer.packages.map((pkg, index) => (
+                        {influencer.services.map((pkg, index) => (
                           <label key={index} className="block">
                             <input
                               type="radio"
                               name="selectedPackage"
-                              value={pkg.name}
+                              value={pkg.title}
                               onChange={handleInputChange}
                               className="sr-only"
                             />
                             <div className={`p-6 rounded-lg border-2 cursor-pointer transition-all duration-300 ${
-                              formData.selectedPackage === pkg.name
+                              formData.selectedPackage === pkg.title
                                 ? 'border-white bg-white/20'
                                 : 'border-white/30 bg-white/10 hover:border-white/50'
                             }`}>
                               <div className="flex justify-between items-center">
                                 <div>
-                                  <h3 className="text-lg font-semibold text-white">{pkg.name}</h3>
+                                  <h3 className="text-lg font-semibold text-white">{pkg.title}</h3>
                                   {pkg.description && (
                                     <p className="text-gray-300 text-sm mt-1">{pkg.description}</p>
                                   )}
