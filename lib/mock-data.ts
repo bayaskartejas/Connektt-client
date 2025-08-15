@@ -8,8 +8,8 @@ export interface Influencer {
   experience: string;
   specialties: string[];
   availableFor: string[];
-  packages: {
-    name: string;
+  services: {
+    title: string;
     price: number;
     description?: string;
   }[];

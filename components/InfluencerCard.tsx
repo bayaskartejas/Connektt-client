@@ -81,15 +81,15 @@ export default function InfluencerCard({ influencer, index }: InfluencerCardProp
         </div>
 
         <div>
-          <h4 className="text-white font-medium mb-3">💼 Service Packages:</h4>
-          <div className="space-y-2">
-            {influencer.packages && influencer.packages.map((pkg, idx) => (
-              <div key={idx} className="flex justify-between items-center text-sm">
-                <span className="text-gray-300">{idx + 1}. {pkg.name}</span>
-                <span className="text-white font-semibold">₹{pkg.price.toLocaleString()}</span>
-              </div>
-            ))}
-          </div>
+            <h4 className="text-white font-medium mb-3">💼 Service Packages:</h4>
+            <div className="space-y-2">
+              {influencer.services && influencer.services.map((pkg, idx) => (
+                <div key={idx} className="flex justify-between items-center text-sm">
+                  <span className="text-gray-300">{idx + 1}. {pkg.title}</span>
+                  <span className="text-white font-semibold">₹{pkg.price.toLocaleString()}</span>
+                </div>
+              ))}
+            </div>            
         </div>
 
         <Link href={`/book?influencer=${influencer.id}`}>
